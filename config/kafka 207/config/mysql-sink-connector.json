@@ -1,0 +1,34 @@
+{
+  "name": "mysql-sink-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
+    "tasks.max": "1",
+    "topics": "fullfillment.test.customers",
+    "connection.url": "jdbc:mysql://172.30.2.207:3306/demo?useSSL=false&allowPublicKeyRetrieval=true",
+    "connection.username": "phuc",
+    "connection.password": "Phuc@1NP",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "true",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "true",
+    "insert.mode": "insert",
+    "delete.enabled": "false",
+    "primary.key.mode": "none",
+    "driver.class": "com.mysql.cj.jdbc.Driver",
+    "batch.size": "1000",
+    
+    "transforms": "unwrap,replaceField",
+    "transforms.unwrap.type": "io.debezium.connector.mongodb.transforms.ExtractNewDocumentState",
+    "transforms.unwrap.operation.header": "true",
+    "transforms.unwrap.drop.tombstones": "false",
+    
+    "transforms.replaceField.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
+    "transforms.replaceField.whiteList": "_id,name,age,address,email,phoneNumber,profession,createdAt",
+    "auto.create": "false",
+    "auto.evolve": "false",
+    "schema.evolution": "basic",
+    "transforms.unwrap.handle.duplicate.fields": "skip",
+	
+	 "table.name.format": "mongodb_customers"
+  }
+}

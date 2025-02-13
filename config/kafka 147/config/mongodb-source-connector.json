@@ -1,0 +1,37 @@
+{
+  "name": "mongodb-source-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.mongodb.MongoDbConnector",
+    "tasks.max": "1",
+    "mongodb.connection.string": "mongodb://root:Phuc%401NP@172.30.2.147:27017/?replicaSet=rs0",
+    "mongodb.auth.source": "admin",
+    "topic.prefix": "fullfillment",
+    "database.include.list": "test",
+    "collection.include.list": "test.customers",
+    "snapshot.mode": "initial",
+    "mongodb.connect.timeout.ms": "10000",
+    "mongodb.server.selection.timeout.ms": "10000",
+    "transforms": "unwrap,extractNew,convertDate",
+    
+    "transforms.unwrap.type": "io.debezium.connector.mongodb.transforms.ExtractNewDocumentState",
+    "transforms.unwrap.drop.tombstones": false,
+    "transforms.unwrap.delete.handling.mode": "drop",
+    "transforms.unwrap.operation.header": "true",
+    
+    "transforms.extractNew.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
+    "transforms.extractNew.whitelist": "_id,name,age,address,email,phoneNumber,profession,createdAt",
+    
+    "transforms.unwrap.add.source.fields": "db,collection",
+    "transforms.unwrap.array.encoding": "array",
+    
+    "transforms.convertDate.type": "org.apache.kafka.connect.transforms.TimestampConverter$Value",
+    "transforms.convertDate.target.type": "string",
+    "transforms.convertDate.format": "yyyy-MM-dd HH:mm:ss",
+    "transforms.convertDate.field": "createdAt",
+
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "true",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "true"
+  }
+}
