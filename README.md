@@ -1,4 +1,3 @@
-# postgresql-streaming-elasticsearch
 # Streaming Data from PostgreSQL to Elasticsearch via Kafka
 
 ## 1. Introduction
