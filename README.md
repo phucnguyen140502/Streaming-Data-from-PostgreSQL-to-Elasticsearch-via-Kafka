@@ -30,6 +30,15 @@ To address performance issues during search operations, we integrated **Elastics
 
 - **Primary Database:**  
   - **PostgreSQL:** Serves as the main data store, ensuring data integrity and consistency across product information.
+```sql
+SELECT * FROM pg_create_logical_replication_slot('debezium_slot', 'pgoutput');
+
+
+ALTER SYSTEM SET wal_level = logical;
+ALTER SYSTEM SET max_replication_slots = 5;
+ALTER SYSTEM SET max_wal_senders = 5;
+SELECT pg_reload_conf();
+```
 
 - **Elasticsearch Integration:**  
   - Configured Elasticsearch to handle incoming search queries from users.
