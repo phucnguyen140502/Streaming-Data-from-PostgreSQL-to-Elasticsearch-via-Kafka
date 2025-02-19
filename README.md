@@ -78,4 +78,9 @@ The Flow Chart to apply:
 
 Integrating Elasticsearch into the tech e-commerce platform significantly enhanced search performance and improved user experience. The automatic data synchronization between PostgreSQL and Elasticsearch ensures that search results remain both accurate and up-to-date. This solution not only addresses current performance challenges but also provides a scalable foundation for future growth as the product catalog and user base expand.
 
+| **Time Type**      | **Postgres** | **Elastic Search** |
+|--------------------|------------------------------|---------------------------|
+| **Execution Time** | 713 ms                       | 200 ms                    |
+
+
 *This project demonstrates the effective application of advanced search technologies to optimize performance in large-scale e-commerce systems.*
