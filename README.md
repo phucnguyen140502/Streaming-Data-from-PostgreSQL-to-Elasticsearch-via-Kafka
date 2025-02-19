@@ -50,7 +50,7 @@ SELECT pg_reload_conf();
 
 - **Data Synchronization Process:**  
   1. **Data Updates:** Product information is continuously updated in the core system.
-  2. **Synchronization:** An automated service transfers updated data from PostgreSQL to Elasticsearch.
+  2. **Synchronization:** An automated service transfers updated data from PostgreSQL to Elasticsearch by Kakfa.
   3. **Search Queries:** User search requests are processed by Elasticsearch, which returns results swiftly and accurately.
 
 The Flow Chart to apply:
