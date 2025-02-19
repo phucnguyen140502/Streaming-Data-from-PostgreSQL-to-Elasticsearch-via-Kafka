@@ -1,4 +1,4 @@
-# Tech E-Commerce Website Project
+# Tech E-Commerce System
 
 ## 1. Context
 
